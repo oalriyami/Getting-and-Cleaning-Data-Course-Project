@@ -14,18 +14,19 @@ Each column in the result data file denote a measurement.
 ** List of Columns: **
 
 1. activity: Denote the activity that was performed during the measurement. The activity is one of the following:
-
-    * WALKING
 	
-    * WALKING_UPSTAIRS
+	* WALKING
 	
-    * WALKING_DOWNSTAIRS
+	* WALKING_UPSTAIRS
 	
-    * SITTING
+	* WALKING_DOWNSTAIRS
 	
-    * STANDING
-
-    * LAYING
+	* SITTING
+	
+	* STANDING
+	
+	* LAYING
+	
 2. tBodyAcc-mean()-X: The mean of the body acceleration in the x-axis.
 
 3. tBodyAcc-mean()-Y: The mean of the body acceleration in the y-axis.
