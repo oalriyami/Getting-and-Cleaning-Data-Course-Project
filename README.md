@@ -48,7 +48,8 @@ test_labels<-merge(activity_labels,test_labels,by="V1")
 
 ```
 test_set<-read.table(paste0(path,'/test/X_test.txt'),colClasses='numeric')
-test_set<-cbind(test_labels,test_set)[,c(-1)]
+test_subject<-read.table(paste0(path,'/test/subject_test.txt'))
+test_set<-cbind(test_labels,test_subject,test_set)[,c(-1)]
 ```
 
 * Obtain the activity codes for the train set. Merge it with the activities labels list to obtain descriptive activities names
@@ -62,7 +63,8 @@ train_labels<-merge(activity_labels,train_labels,by="V1")
 
 ```
 train_set<-read.table(paste0(path,'/train/X_train.txt'),colClasses='numeric')
-train_set<-cbind(train_labels,train_set)[,c(-1)]
+train_subject<-read.table(paste0(path,'/train/subject_train.txt'))
+train_set<-cbind(train_labels,train_subject,train_set)[,c(-1)]
 ```
 
 * Combine the test set with the train set and label the columns with their measurements from the features list
@@ -91,10 +93,10 @@ all_set<-all_set[,cols]
 all_set<-data.table(all_set)
 ```
 
-* Obtain the mean for each activity and measurement
+* Obtain the mean for each activity and subject
 
 ```
-all_set<-all_set[, lapply(.SD,mean), by="activity"]
+all_set<-all_set[, lapply(.SD,mean), by="activity,subject"]
 ```
 
 * Write to the file specified in the out variable
