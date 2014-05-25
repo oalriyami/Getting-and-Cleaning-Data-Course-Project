@@ -24,6 +24,12 @@ where:
 2. How it work
 -----------
 
+* Make sure data.table is included
+
+```
+library("data.table")
+```
+
 * Obtain the features list and activities labels list from the root of the path directory
 
 ```
@@ -79,10 +85,16 @@ cols<-c(1,grep("mean()",colnames(all_set),fixed=TRUE),grep("std()",colnames(all_
 all_set<-all_set[,cols]
 ```
 
-* Reorder the set by the activity type
+* Convert all_set into a data table
 
 ```
-all_set<-all_set[order(all_set[,c(1)]),]
+all_set<-data.table(all_set)
+```
+
+* Obtain the mean for each activity and measurement
+
+```
+all_set<-all_set[, lapply(.SD,mean), by="activity"]
 ```
 
 * Write to the file specified in the out variable

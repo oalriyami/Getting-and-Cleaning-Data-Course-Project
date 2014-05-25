@@ -2,7 +2,7 @@ Code Book
 =========
 1. About the data file
 ----------------------
-The data file obtained from the project script is the results of combining the testing and training sets that were collected from the Samsung Galaxy S smartphone. The result file will only contain the measurements of either mean or standard deviation and will be stored in one tidy comma sperated text file.
+The data file obtained from the project script is the results of combining the testing and training sets that were collected from the Samsung Galaxy S smartphone. The result file will only contain the mean of the measurements of either mean or standard deviation and will be stored in one tidy comma sperated text file.
 
 For a detailed procedure of generating the result file, please consult Section 2 of "README.md".
 

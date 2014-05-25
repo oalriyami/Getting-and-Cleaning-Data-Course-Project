@@ -1,5 +1,8 @@
 run_analysis <- function(path = 'UCI HAR Dataset',out='tidy.txt')
 { 
+  # Make sure data.table is included
+  library("data.table")
+  
   # Obtain the features and activities lists from the root of the path directory
   features<-read.table(paste0(path,'/features.txt'))
   activity_labels<-read.table(paste0(path,'/activity_labels.txt'))
@@ -31,8 +34,11 @@ run_analysis <- function(path = 'UCI HAR Dataset',out='tidy.txt')
   cols<-c(1,grep("mean()",colnames(all_set),fixed=TRUE),grep("std()",colnames(all_set),fixed=TRUE))
   all_set<-all_set[,cols]
   
-  # Reorder the set by the activity type
-  all_set<-all_set[order(all_set[,c(1)]),]
+  # Convert all_set into a data table
+  all_set<-data.table(all_set)
+  
+  # Obtain the mean for each activity and measurement
+  all_set<-all_set[, lapply(.SD,mean), by="activity"]
   
   # Write to the file specified in the out variable
   write.csv(all_set,file=out,row.names=FALSE)
