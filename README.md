@@ -83,7 +83,7 @@ rm(activity_labels,test_labels,train_labels,test_set,train_set,features)
 * Obtain only the mean and standard deviation measurements by checking the names of the column for the keywords: 'mean()' and 'std()'
 
 ```
-cols<-c(1,grep("mean()",colnames(all_set),fixed=TRUE),grep("std()",colnames(all_set),fixed=TRUE))
+cols<-c(1,2,grep("mean()",colnames(all_set),fixed=TRUE),grep("std()",colnames(all_set),fixed=TRUE))
 all_set<-all_set[,cols]
 ```
 
